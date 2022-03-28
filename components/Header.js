@@ -17,6 +17,16 @@ export default function Header() {
                 <a>News</a>
               </Link>
             </li>
+            <li>
+              <Link href="/about">
+                <a>About</a>
+              </Link>
+            </li>
+            {/* <li>
+              <Link href="/news">
+                <a>News</a>
+              </Link>
+            </li> */}
           </ul>
         </nav>
       </header>
