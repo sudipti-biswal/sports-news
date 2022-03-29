@@ -17,7 +17,7 @@ export default function NewsItem({ news }) {
           <h3>{news.name}</h3>
         </div>
         <div className={styles.link} >
-           <Link href={'/news/${news.slug}'}>
+           <Link href={`/news/${news.slug}`}>
                <a className="btn">Read More</a>
            </Link>
         </div>

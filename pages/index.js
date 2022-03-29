@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import { API_URL } from "@/config/index";
 import NewsItem from "@/components/NewsItem";
 
+console.log("process.env.NEXTJS_PUBLIC_UR", process.env.NEXT_PUBLIC_URL);
 // export async function getServerSideProps() {
 //   const res = await fetch(`${API_URL}/api/news`);
 //   const news = await res.json();

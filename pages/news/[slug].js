@@ -5,7 +5,30 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/news.module.css";
 
-export async function getServerSideProps({ query: { slug } }) {
+// export async function getServerSideProps({ query: { slug } }) {
+//   const res = await fetch(`${API_URL}/api/news/${slug}`);
+//   const singleNews = await res.json();
+//   console.log("v", singleNews);
+//   return {
+//     props: { 
+//       news: singleNews[0],
+//      },
+//   };
+// }
+
+export async function getStaticPaths(){
+  const res = await fetch(`${API_URL}/api/news`);
+  const news = await res.json()
+  const paths = news.map((item)=>({
+    params:{slug:item.slug}
+  }))
+  return{
+    paths,
+    fallback:true,
+  }
+}
+
+export async function getStaticProps({ params: { slug } }) {
   const res = await fetch(`${API_URL}/api/news/${slug}`);
   const singleNews = await res.json();
   console.log("v", singleNews);
@@ -13,9 +36,9 @@ export async function getServerSideProps({ query: { slug } }) {
     props: { 
       news: singleNews[0],
      },
+     revalidate:1
   };
 }
-
 export default function SingleNews({ news }) {
   console.log({news},news)
   const router = useRouter();

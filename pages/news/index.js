@@ -20,7 +20,9 @@ import styles from "@/styles/news.module.css"
 
 
 export async function getStaticProps() {
+  console.log(API_URL)
   const res = await fetch(`${API_URL}/api/news`);
+
   const news = await res.json();
   return {
     props: {news},
